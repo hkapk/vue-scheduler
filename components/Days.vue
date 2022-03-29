@@ -4,5 +4,7 @@ export default {
 </script>
 
 <template>
-  <h1> Days </h1>
+<div>
+  <a href='/Days'> Days </a>
+</div>
 </template>

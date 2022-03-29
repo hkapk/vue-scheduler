@@ -1,21 +1,22 @@
 <script>
 export default {
-  data () {
+  name: "weeklySchedule",
+  data() {
     return {
-      data: [],
-      q: ''
-    }
+      data: []
+    };
   },
-  async fetch () {
+   async fetch () {
     this.data = await this.$content('data')
     .only(['date', 'times'])
-    .sortBy('times')
-    .where({ times: { $gte: '16:00:00' } })
+    .sortBy('date')
+    .where({ date: { $gte: '2021-02-10' } })
     .fetch()
   }
 }
+
 </script>
 
 <template>
-  <pre> {{ data }} </pre>
+   <pre> {{ data }} </pre>
 </template>

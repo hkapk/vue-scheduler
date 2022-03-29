@@ -4,5 +4,7 @@ export default {
 </script>
 
 <template>
-  <h1> Swimmers </h1>
+<div>
+  <a href="/Swimmers"> Swimmers </a>
+</div>
 </template>
