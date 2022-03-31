@@ -1,14 +1,13 @@
 <template>
   <div>
-    <h1>Days</h1>
-    <div v-for="data in data" :key="data.date">
-      <div>
-        <span> Date: {{ data.date }}</span>
-        <div v-for="(time, index) in data.times" :key="time.index">
-          <span> Times: {{ time.time }} </span>
-        </div>
-      </div>
-    </div>
+    <h1>Cart</h1>
+    <ul>
+      <li v-for="data in data" :key="data.date">
+        Date:
+        {{ data.date }}
+      </li>
+    </ul>
+    <pre> {{ data }} </pre>
   </div>
 </template>
 

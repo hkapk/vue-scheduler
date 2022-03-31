@@ -1,14 +1,8 @@
 <template>
   <div>
-    <h1>Days</h1>
-    <div v-for="data in data" :key="data.date">
-      <div>
-        <span> Date: {{ data.date }}</span>
-        <div v-for="(time, index) in data.times" :key="time.index">
-          <span> Times: {{ time.time }} </span>
-        </div>
-      </div>
-    </div>
+    <h1>Instructors</h1>
+    <input type="search" v-model="q" @input="$fetch" />
+    <pre> {{ data }} </pre>
   </div>
 </template>
 

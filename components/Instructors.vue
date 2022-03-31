@@ -1,8 +1,9 @@
 <script>
-export default {
-}
+export default {}
 </script>
 
 <template>
-  <h1> Instructors </h1>
+  <div>
+    <a href="/Instructors"> Instructors </a>
+  </div>
 </template>
