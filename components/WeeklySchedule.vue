@@ -1,3 +1,20 @@
+<template>
+  <div>
+    <div v-for="data in data" :key="data.date">
+      <div>
+        <span>
+          <p>{{ data.date }}</p>
+        </span>
+        <div v-for="(time, index) in data.times" :key="time.index">
+          <span>
+            <button @click="greet">{{ time.time }}</button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
 <script>
 export default {
   name: 'weeklySchedule',
@@ -5,6 +22,13 @@ export default {
     return {
       data: [],
     }
+  },
+  methods: {
+    //add to cart function here
+    greet(event) {
+      // `this` inside methods points to the current active instance
+      alert(`Course Added!`)
+    },
   },
   async fetch() {
     this.data = await this.$content('data')
@@ -15,16 +39,3 @@ export default {
   },
 }
 </script>
-
-<template>
-  <div>
-    <div v-for="data in data" :key="data.date">
-      <div>
-        <span> Date: {{ data.date }}</span>
-        <div v-for="(time, index) in data.times" :key="time.index">
-          <span> Times: {{ time.time }} </span>
-        </div>
-      </div>
-    </div>
-  </div>
-</template>

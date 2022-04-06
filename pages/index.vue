@@ -1,10 +1,10 @@
 <template>
   <div>
-  <Header />
-  <Swimmers />
-  <Days />
-  <Instructors />
-  <weeklySchedule />
+    <Header />
+    <Swimmers />
+    <Days />
+    <Instructors />
+    <weeklySchedule />
   </div>
 </template>
 
@@ -20,9 +20,7 @@ export default {
     WeeklySchedule,
     Swimmers,
     Days,
-    Instructors
-  }
+    Instructors,
+  },
 }
 </script>
-
-
