@@ -45,7 +45,8 @@ export const useCartStore = defineStore('cart',{
           {
             isAdded = true
       //  increments number of courses in cart
-          return {id: ci.id, qty: ci.qty + 1 }
+          //return {id: ci.id, qty: ci.qty + 1 }
+          alert(`already added!`);
         }
           return {id: ci.id, qty: ci.qty}
         })

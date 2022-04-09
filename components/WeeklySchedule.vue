@@ -1,33 +1,39 @@
 <template>
-  <div>
-    <div v-for="data in data" :key="data.date">
-      <div>
+  <div class="container border">
+    <div class="row">
+    <div class="col-sm-2" v-for="data in data" :key="data.date">
         <span>
-          <p>{{ data.date }}</p>
+          <div class="border-bottom m-2">{{ data.date }}</div>
         </span>
-        <div v-for="(time, index) in data.times" :key="time.index">
-          <span>
-            <button @click="greet">{{ time.time }}</button>
+        <div v-for="(time) in data.times" :key="time.index">
+          <span class="">
+            <div class="col-sm-2">
+            <b-button class="col m-1" variant="outline-primary" @click="addToCart(time.index)">{{ time.time }}</b-button>
+            </div>
           </span>
-        </div>
+      </div>
       </div>
     </div>
-  </div>
+    </div>
 </template>
 
 <script>
+
 export default {
   name: 'weeklySchedule',
   data() {
     return {
       data: [],
-    }
+    };
   },
   methods: {
     //add to cart function here
-    greet(event) {
+    addToCart() {
+      let data = this.data
       // `this` inside methods points to the current active instance
-      alert(`Course Added!`)
+      console.log(this.data, "data");
+      alert(`added to cart`)
+
     },
   },
   async fetch() {

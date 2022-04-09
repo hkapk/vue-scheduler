@@ -1,14 +1,14 @@
 <template>
+<div class ="row">
   <div>
     <Header />
-    <Swimmers />
-    <Days />
-    <Instructors />
-    <weeklySchedule />
+    <WeeklySchedule />
+  </div>
   </div>
 </template>
 
 <script>
+
 import WeeklySchedule from '../components/WeeklySchedule.vue'
 import Swimmers from '../components/Swimmers.vue'
 import Days from '../components/Days.vue'
