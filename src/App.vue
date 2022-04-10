@@ -15,16 +15,22 @@
     <div v-if="page === 'cart'">
         <h1> Cart </h1>
         <div>
-            <div v-for="course in cart" :key="course.time">
-                {{course.time}} <button class="col m-1" variant="outline-primary" @click="removeFromCart(time)">Delete</button> 
-                </div>
+            <div v-for="(course, index) in cart" :key="index">
+             {{course.time}} <button class="col m-1" variant="outline-primary" @click="removeFromCart(time)">Delete</button> 
+                
+            <div v-for="start_date in course.students" :key="start_date.index">
+              {{start_date.start_date}}
+              </div>
+
+            </div>
+
         </div>
     </div>
 
     <div v-if="page === 'courses'">
     <div class="container border">
     <div class="row">
-    <div class="col-sm-1" v-for="course in courses" :key="course.date">
+    <div class="col-sm-1" v-for="(course, index) in courses" :key="index">
         <span>
           <div class="border-bottom m-2">{{ course.date }}</div>
         </span>
@@ -4648,7 +4654,6 @@ export default {
     addToCart(time) {
       // `this` inside methods points to the current active instance
      this.cart.push(time);
-     console.log(this.cart, "time-clicked");
     },
     navigateTo(page) {
         this.page = page;
