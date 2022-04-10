@@ -31,5 +31,3 @@
         },
       }
     </script>
-  </div>
-</template>
