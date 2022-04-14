@@ -2,14 +2,13 @@
 <div class="container">
   <div class="row no-gutters m-4">
     <h1 class="col-12 col-sm-9 col-md-9 text-dark">ADD WEEKLY LESSON</h1>
-    <b-button class="col-2 col-md-2 m-2" href="/Cart"> <b-icon icon="cart" font-scale="1"></b-icon> CART </b-button>
+    <button @click="navigateTo('cart')" class="col-2 col-md-2 m-2"> CART ({{cart.length}})</button>
     </div>
     <div class="container m-2 p-4 border">
     <div class="row align-items-start">
     <a class="col text-primary" href="/Swimmers"> Swimmers </a>
-    <a class="col text-primary" href="/Days"> Days </a>
+    <a class="col text-primary" href="/vue-scheduler/"> Days </a>
     <a class="col text-primary" href="/Instructors"> Instructors </a>
-  </div>
   </div>
   </div>
 </template>
@@ -19,7 +18,8 @@ export default {
     name: 'weeklySchedule',
   data() {
     return {
-      data: [],
+      cart: [],
+      courses: [],
     };
   },
   methods: {

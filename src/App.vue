@@ -2,42 +2,39 @@
 <div class="container">
   <div class="row no-gutters m-4">
     <h1 class="col-12 col-sm-9 col-md-9 text-dark">ADD WEEKLY LESSON</h1>
-    <button @click="navigateTo('cart')" class="col-2 col-md-2 m-2"> CART ({{cart.length}})</button>
+    <button @click="navigateTo('cart')" class="button col-2 col-md-2 m-2"> CART ({{cart.length}})</button>
     </div>
     <div class="container m-2 p-4 border">
     <div class="row align-items-start">
-    <a class="col text-primary" href="/Swimmers"> Swimmers </a>
-    <a class="col text-primary" href="/"> Days </a>
-    <a class="col text-primary" href="/Instructors"> Instructors </a>
+    <button class="col text-primary" href="/Swimmers"> Swimmers </button>
+    <button @click="navigateTo('courses')" class="col text-primary" href="/vue-scheduler/"> Days </button>
+    <button class="col text-primary" href="/Instructors"> Instructors </button>
   </div>
   </div>
     
     <div v-if="page === 'cart'">
-        <h1> Cart </h1>
-        <div>
-            <div v-for="(course, index) in cart" :key="index">
-             {{course.time}} <button class="col m-1" variant="outline-primary" @click="removeFromCart(time)">Delete</button> 
-                
-            <div v-for="start_date in course.students" :key="start_date.index">
-              {{start_date.start_date}}
+        <h1 class="container border"> Cart</h1>
+        <div class="container border">
+            <div class="card" v-for="(course, index) in cart" :key="index">  
+              <p> {{course.time}}</p><button class="delete-button col-sm-1 m-1" variant="outline-primary" @click="removeFromCart(course)">Delete</button>    
+               <div v-for="start_date in course.students" :key="start_date.index">
+              {{ start_date.start_date }}
               </div>
-
             </div>
-
         </div>
     </div>
 
     <div v-if="page === 'courses'">
     <div class="container border">
     <div class="row">
-    <div class="col-sm-1" v-for="(course, index) in courses" :key="index">
+    <div class="col" v-for="(course, index) in courses" :key="index">
         <span>
           <div class="border-bottom m-2">{{ course.date }}</div>
         </span>
-        <div v-for="time in course.times" :key="time.index">
+        <div v-for="(time, index) in course.times" :key="index">
           <span>
             <div class="col-sm-2">
-            <button class="col m-1" variant="outline-primary" @click="addToCart(time)">{{ time.time }}</button>
+            <button class="col m-2" variant="outline-primary" @click="addToCart(time)">{{ time.time }}</button>
             </div>
           </span>
       </div>
@@ -53,9 +50,10 @@ export default {
   name: 'weeklySchedule',
   data() {
     return {
+        firstTime: false,
         page: 'courses',
         cart: [],
-      courses: [
+        courses: [
   {
     "date": "2021-02-10",
     "times": [
@@ -4658,10 +4656,31 @@ export default {
     navigateTo(page) {
         this.page = page;
     },
-    removeFromCart(time) {
-        this.cart.splice(this.cart.indexOf(time));
+    removeFromCart(course) {
+        console.log("remove from cart Index:", this.cart.indexOf(course));
+        this.cart.splice(this.cart.indexOf(course), 1);
     }
   },
 components: {}
 };
 </script>
+
+<style>
+button {
+  border-color: blue;
+  border-radius: 5px;
+  color: blue;
+}
+.delete-button {
+  border-color: red;
+  border-radius: 5px;
+  color: red;
+}
+.card {
+  border-color: blue;
+  border: 10px;
+  margin: 10px;
+}
+
+
+</style>
