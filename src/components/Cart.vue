@@ -14,6 +14,11 @@
 
 <script>
 export default {
-  props: ["cart"]
+  props: ["cart"],
+  methods: {
+    removeFromCart(course) {
+      this.$emit("removeFromCart", course);
+    }
+  }
 };
 </script>

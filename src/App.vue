@@ -13,7 +13,7 @@
   </div>
     
     <div v-if="page === 'cart'">
-       <Cart :cart="cart" />
+       <Cart v-on:removeFromCart="removeFromCart" :cart="cart" />
     </div>
 
     <div v-if="page === 'courses'">
