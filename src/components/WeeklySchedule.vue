@@ -1,15 +1,15 @@
 <template>
 <div>
-    <div class="container border">
+  <div class="container border">
     <div class="row">
-    <div class="col-sm-1" v-for="(course, index) in courses" :key="index">
+    <div class="col" v-for="(course, index) in courses" :key="index">
         <span>
           <div class="border-bottom m-2">{{ course.date }}</div>
         </span>
-        <div v-for="time in course.times" :key="time.index">
+        <div v-for="(time, index) in course.times" :key="index">
           <span>
             <div class="col-sm-2">
-            <button class="col m-1" variant="outline-primary" @click="addToCart(time)">{{ time.time }}</button>
+            <button class="col m-2" variant="outline-primary" @click="addToCart(time)">{{ time.time }}</button>
             </div>
           </span>
       </div>
@@ -4620,10 +4620,9 @@ export default {
     };
   },
   methods: {
-    //add to cart function here
     addToCart(time) {
-      // `this` inside methods points to the current active instance
-     this.cart.push(time);
+   
+     this.$emit("addToCart", time);
     },
     navigateTo(page) {
         this.page = page;
